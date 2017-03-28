@@ -15,6 +15,13 @@
                     <li>
                         <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
                     </li>
+                    <li>
+                        <%= link_to "user listing", listing_path(current_user)%>
+                    </li>
+                    <li>
+                        <%= link_to "bookings", reservations_path %>
+                    </li>
+                   
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -43,10 +50,14 @@
                 <h4>availability to: <%= l.availability_to %><br></h4>
                 <h4>price: <%= l.price %><br></h4>
                 <%= image_tag "#{l.avatars.first}" %>
+                <div>
+                <%= link_to "booking", new_reservation_path %>
+                </div>
             </div>
         </div>
     </div>
    <% end %>
+
 
    <div class="row">
   <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
