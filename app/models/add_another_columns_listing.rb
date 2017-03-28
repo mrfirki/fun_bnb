@@ -1,0 +1,2 @@
+class AddAnotherColumnsListing < ApplicationRecord
+end

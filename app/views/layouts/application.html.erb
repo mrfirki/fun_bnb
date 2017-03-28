@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FunBnb</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="body">
+
+
+  <center>
+    <header>
+      <% if signed_in? %>
+    	  <%= current_user.email %>
+    	  <%= button_to "Sign out", sign_out_path, method: :delete %>
+    	<% else %>
+    	 
+    	<% end %>
+    </header>
+   </center> 
+
+    <section> 
+      <div id="flash">
+        <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+        <%= yield %>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<% if signed_in? %>
+
+<!-- dashborad -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <%= link_to "Home", root_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Profile", user_path(current_user) %>
+                    </li>
+                    <li>
+                        <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+	                <li >
+	                    <%= link_to "Sign out", sign_out_path, method: :delete %>
+	                </li>
+                </ul>
+            </div>            
+        </div>        
+    </nav>
+
+<center>
+<% @listings.each do |l| %>
+<div class="spacing"></div>
+    <div class="row container-fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <h3>owner list: <%= l.user.username %><br><h3>
+                <h4>name: <%= l.name %><br></h4>
+                <h4>address: <%= l.adress %><br></h4>
+                <h4>home type: <%= l.home_type %><br></h4>
+                <h4>room type: <%= l.room_type %><br></h4>
+                <h4>place: <%= l.place %><br></h4>
+                <h4>guest: <%= l.maximum_guests %><br></h4>
+                <h4>availability from: <%= l.availability_from %><br></h4>
+                <h4>availability to: <%= l.availability_to %><br></h4>
+                <h4>price: <%= l.price %><br></h4>
+                <%= image_tag "#{l.avatars.first}" %>
+            </div>
+        </div>
+    </div>
+   <% end %>
+
+   <div class="row">
+  <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+    <div class="col-md-2 col-xs-2 col-md-offset-2 col-xs-offset-2 pull-left">
+      <% unless @listings.include?(Listing.first) %>
+        <%= form_tag root_path, method: :get do %>
+          <%= hidden_field_tag :value, @counter - 10 %>
+          <%= submit_tag "<" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-2 col-xs-2 col-md-offset-2 col-xs-offset-2 pull-right">
+      <% unless @listings.include?(Listing.last) %>
+        <%= form_tag root_path, method: :get do %>
+          <%= hidden_field_tag :value, @counter + 10 %>
+          <%= submit_tag ">" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+   
+</center>
+
+
+<% else %>
+
+<!-- welcome page -->
+
+	<center>
+        <div class="welcome-page">
+    		<h1 class="welcome-title">Welcome to Funbnb</h1>
+    		<%= link_to "Sign in", sign_in_path, class: "btn btn-primary" %>
+    		<%= link_to t(".sign_up"), sign_up_path, class: "btn btn-primary" %>
+        </div> 
+	</center>
+
+<% end %>

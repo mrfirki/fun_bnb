@@ -1,0 +1,54 @@
+<div class="spacing"></div>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2 ">
+    <div class="text-field form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, type: 'name', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :adress %>
+      <%= form.text_field :adress, type: 'adress', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :home_type %>
+      <%= form.text_field :home_type, type: 'home_type', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :room_type %>
+      <%= form.text_field :room_type, type: 'room_type', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :place %>
+      <%= form.text_field :place, type: 'place', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :maximum_guests %>
+      <%= form.text_field :maximum_guests, type: 'maximum_guests', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :availability_from %>
+      <%= form.text_field :availability_from, type: 'availability_from', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :availability_to %>
+      <%= form.text_field :availability_to, type: 'availability_to', class: "form-control" %>
+    </div>
+
+    <div class="text-field form-group">
+      <%= form.label :price %>
+      <%= form.text_field :price, type: 'price', class: "form-control" %>
+    </div>
+
+    <%= form.file_field :avatars, :class=> "form-control", :value => "#{@listing.avatars}", :placeholder => "avatars", multiple: true  %>
+  </div>
+</div>
+<div class="spacing"></div>
+
+
