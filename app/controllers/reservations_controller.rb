@@ -9,13 +9,14 @@ class ReservationsController < ApplicationController
 	end
 
 	def show
+		@listings = Listing.all
 		@reservation = Reservation.find(params[:id])
 	end	
 
 	def create
 		@reservation = current_user.reservations.new(reservation_params)
 		if @reservation.save
-			redirect_to @reservation
+			redirect_to reservations_path
 		else
 			render "new"
 		end		 

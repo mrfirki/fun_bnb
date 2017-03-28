@@ -11,29 +11,29 @@
                     <li>
                         <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
                     </li>
+                    <li>
+                        <%= link_to "bookings", reservations_path %>
+                    </li>
+                   
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                  <li >
-                      <%= link_to "Sign out", sign_out_path, method: :delete %>
-                  </li>
+	                <li >
+	                    <%= link_to "Sign out", sign_out_path, method: :delete %>
+	                </li>
                 </ul>
             </div>            
         </div>        
     </nav>
 
-
-
-
+<p>listing index</p>
 <center>
-	<div class="row">
-	  <div class="container-fluid">
-	    <div class="col-md-8 col-md-offset-2">
-	      <h3>Booking person: <%= @reservation.user.username %></h3>
-	      <h3>Guest Number: <%= @reservation.guest_count %></h3>
-	      <h3>Day check in: <%= @reservation.check_in %></h3>
-	      <h3>Day check out: <%= @reservation.check_out %></h3>   
-	    </div>  
-	  </div>
+<div class="row">
+	<div class="container-fluid">
+	<% @listings.each do |l| %>
+		<%= l.name %><br>
+		<%= l.adress %><br>
+	<% end %>
 	</div>
-</center> 
+</div>
+</center>	
