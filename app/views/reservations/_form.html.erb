@@ -3,18 +3,20 @@
   <div class="col-md-8 col-md-offset-2 ">
     <div class="text-field form-group">
       <%= form.label :guest_count %>
-      <%= form.number_field :guest_count, type: 'guest_count', class: "form-control" %>
+      <%= form.number_field :guest_count, class: "form-control" %>
     </div>
 
     <div class="text-field form-group">
       <%= form.label :check_in %>
-      <%= form.date_field :check_in, type: 'check_in', class: "form-control" %>
+      <%= form.text_field :check_in, class: "form-control datepicker" %>
     </div>
 
     <div class="text-field form-group">
       <%= form.label :check_out %>
-      <%= form.date_field :check_out, type: 'check_out', class: "form-control" %>
+      <%= form.text_field :check_out, class: "form-control datepicker" %>
     </div>
+
+
   </div>
 </div>
 <div class="spacing"></div>

@@ -1,31 +1,9 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <%= link_to "Home", root_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Profile", user_path(current_user) %>
-                    </li>
-                    <li>
-                        <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
-                    </li>
-                </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                  <li >
-                      <%= link_to "Sign out", sign_out_path, method: :delete %>
-                  </li>
-                </ul>
-            </div>            
-        </div>        
-    </nav>
 
 <center>
   <div id="reservation" class="new-reservation">
     <h2><%= t(".reservation") %></h2>
-    <%= form_for @reservation  do |form| %>
+    <%= form_for [@listing,@reservation]  do |form| %>
       <%= render partial: '/reservations/form', object: form %>
 
       <div class="submit-field">

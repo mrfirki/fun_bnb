@@ -9,26 +9,53 @@
   </head>
 
   <body class="body">
+  <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <%= link_to "Home", root_path %>
+                    </li>
+                    <% if signed_in? %>
+                    <li>
+                        <%= link_to "Profile", user_path(current_user) %>
+                    </li>
+                    <li>
+                        <%= link_to "Listing", new_listing_path %>
+                    </li>
+                    <li>
+                        <%= link_to "user listing", user_listings_path(current_user)%>
+                    </li>
+                    <li>
+                        <%= link_to "bookings", user_reservations_path(current_user) %>
+                    </li>
+                        <% if current_user.role == "superadmin" %>
+                    <li>
+                      <%= link_to "super admin", users_path %>
+                    </li>
+                        <% end %>                  
+                </ul>
 
-
-  <center>
-    <header>
-      <% if signed_in? %>
-    	  <%= current_user.email %>
-    	  <%= button_to "Sign out", sign_out_path, method: :delete %>
-    	<% else %>
-    	 
-    	<% end %>
-    </header>
-   </center> 
-
+                <ul class="nav navbar-nav navbar-right">
+                  <li >
+                      <%= link_to "Sign out", sign_out_path, method: :delete %>
+                  </li>
+                </ul>
+                    <% end %>  
+            </div>            
+        </div>        
+    </nav>
+  <div>
     <section> 
       <div id="flash">
         <% flash.each do |key, value| %>
       <div class="flash <%= key %>"><%= value %></div>
         <% end %>
       </div>
-        <%= yield %>
     </section>
+    <div style="padding-top: 50px;">
+        <%= yield %>
+    </div>
   </body>
 </html>
