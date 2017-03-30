@@ -1,36 +1,18 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">           
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-          <%= link_to "Profile", user_path(current_user) %>
-        </li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li >
-          <%= link_to "Sign out", sign_out_path, method: :delete %>
-        </li>
-      </ul>
-    </div>            
-  </div> 
-</nav>
-
 <center>
-	<%= @listing.name %><br>
-	<%= @listing.adress %><br>
-	<%= @listing.home_type %><br>
-	<%= @listing.room_type %><br>
-	<%= @listing.place %><br>
-	<%= @listing.maximum_guests %><br>
-	<%= @listing.availability_from %><br>
-	<%= @listing.availability_to %><br>
-	<%= @listing.price %><br>
+<div class="col-md-8 col-md-offset-2 container">
+  <div>
+    <%= @listing.user.username %>
+  	<%= @listing.name %><br>
+  	<%= @listing.adress %><br>
+  	<%= @listing.home_type %><br>
+  	<%= @listing.room_type %><br>
+  	<%= @listing.place %><br>
+  	<%= @listing.maximum_guests %><br>
+  	<%= @listing.availability_from %><br>
+  	<%= @listing.availability_to %><br>
+  	<%= @listing.price %><br>
 
-
-<p><%= link_to "#{@listing.user.username}", @listing.user %></p>
-
+    <p><%= link_to "#{@listing.user.username}", @listing.user %></p>
+  </div>
+</div>
 </center>

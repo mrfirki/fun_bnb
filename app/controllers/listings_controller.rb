@@ -19,7 +19,11 @@ class ListingsController < ApplicationController
 	end
 
 	def index
-		@listings = Listing.all
+		if params[:user_id]
+			@listings = Listing.where(user_id: params[:user_id])
+		else
+			@listings = Listing.all
+		end
 	end
 
 	def show

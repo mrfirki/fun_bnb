@@ -1,39 +1,29 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <%= link_to "Home", root_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Profile", user_path(current_user) %>
-                    </li>
-                    <li>
-                        <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
-                    </li>
-                    <li>
-                        <%= link_to "bookings", reservations_path %>
-                    </li>
-                   
-                </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-	                <li >
-	                    <%= link_to "Sign out", sign_out_path, method: :delete %>
-	                </li>
-                </ul>
-            </div>            
-        </div>        
-    </nav>
 
-<p>listing index</p>
-<center>
 <div class="row">
-	<div class="container-fluid">
-	<% @listings.each do |l| %>
-		<%= l.name %><br>
-		<%= l.adress %><br>
-	<% end %>
-	</div>
+    <div class="col-md-8 col-md-offset-2">
+    	<div class="text-center">
+
+        <% if @listings.empty? %>
+            <h2> NO LISTINGS LAH </h2>
+        <% else %>
+        	<% @listings.each do |l| %>
+            <div>
+        		<h3>Name:         <%= l.name %><br></h3>
+        		<h3>Address:      <%= l.adress %><br></h3>
+                <h3>Home type:    <%= l.home_type %><br></h3>
+                <h3>Room type:    <%= l.room_type %><br></h3>
+                <h3>Place:        <%= l.place %><br></h3>
+                <h3>Max guest:    <%= l.maximum_guests %><br></h3>
+                <h3>Start date:   <%= l.availability_from %><br></h3>
+                <h3>End date:     <%= l.availability_to %><br></h3>
+                <h3>Price:   <%= l.price %><br></h3>
+                <%= image_tag "#{l.avatars.first}" %>
+            <div>    
+        	<% end %>
+        <% end %>
+        
+    	</div>
+    </div>
 </div>
-</center>	
+	

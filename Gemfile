@@ -27,8 +27,7 @@ gem 'mini_magick'
 #add aws uploader gem
 gem "fog-aws"
 #add datepicker
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
-                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'bootstrap-datepicker-rails'
 #gem figaro to store confidential stuff
 gem 'figaro'
 # Use Puma as the app server

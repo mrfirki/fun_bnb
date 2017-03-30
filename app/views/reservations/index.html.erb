@@ -1,30 +1,3 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <%= link_to "Home", root_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Profile", user_path(current_user) %>
-                    </li>
-                    <li>
-                        <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
-                    </li>
-                    <li>
-                        <%= link_to "user listing", listing_path(current_user)%>
-                    </li>
-                   
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-	                <li >
-	                    <%= link_to "Sign out", sign_out_path, method: :delete %>
-	                </li>
-                </ul>
-            </div>            
-        </div>        
-    </nav>
 
 <center>
 <% @reservations.each do |r| %>
@@ -36,7 +9,9 @@
                 <h4>Guest number: <%= r.guest_count %><br></h4>
                 <h4>Day check in: <%= r.check_in %><br></h4>
                 <h4>Day check out: <%= r.check_out %><br></h4>
-                <%= link_to "my booking", r %>
+                <h4>owner id: <%= r.user.id %><br></h4>
+                <h4>listing id: <%= r.listing_id %><br></h4>
+                <%= link_to "delete", user_reservation_path(r.user, r), method: :delete, data: {confirm: "are you sure?"} %>
             </div>
         </div>
     </div>

@@ -2,37 +2,6 @@
 
 <!-- dashborad -->
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <%= link_to "Home", root_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Profile", user_path(current_user) %>
-                    </li>
-                    <li>
-                        <%= link_to "Listing", new_user_listing_path(current_user, @listing) %>
-                    </li>
-                    <li>
-                        <%= link_to "user listing", listing_path(current_user)%>
-                    </li>
-                    <li>
-                        <%= link_to "bookings", reservations_path %>
-                    </li>
-                   
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-	                <li >
-	                    <%= link_to "Sign out", sign_out_path, method: :delete %>
-	                </li>
-                </ul>
-            </div>            
-        </div>        
-    </nav>
-
 <center>
 <% @listings.each do |l| %>
 <div class="spacing"></div>
@@ -51,7 +20,7 @@
                 <h4>price: <%= l.price %><br></h4>
                 <%= image_tag "#{l.avatars.first}" %>
                 <div>
-                <%= link_to "booking", new_reservation_path %>
+                <%= link_to "booking", new_listing_reservation_path(l) %>
                 </div>
             </div>
         </div>
@@ -64,7 +33,7 @@
     <div class="col-md-2 col-xs-2 col-md-offset-2 col-xs-offset-2 pull-left">
       <% unless @listings.include?(Listing.first) %>
         <%= form_tag root_path, method: :get do %>
-          <%= hidden_field_tag :value, @counter - 10 %>
+          <%= hidden_field_tag :value, @counter - 5 %>
           <%= submit_tag "<" %>
         <% end %>
       <% end %>
@@ -72,7 +41,7 @@
     <div class="col-md-2 col-xs-2 col-md-offset-2 col-xs-offset-2 pull-right">
       <% unless @listings.include?(Listing.last) %>
         <%= form_tag root_path, method: :get do %>
-          <%= hidden_field_tag :value, @counter + 10 %>
+          <%= hidden_field_tag :value, @counter + 5 %>
           <%= submit_tag ">" %>
         <% end %>
       <% end %>

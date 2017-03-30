@@ -16,7 +16,7 @@ class UsersController < Clearance::UsersController
   	@user = User.find(params[:id])
   	if @user.update(user_params)
   		flash[:success] = "update success!!"
-  		redirect_to '/'
+  		render :show
   	else
   		flash[:danger] = "update fail!!"
   		render 	:edit

@@ -1,27 +1,6 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to "Home", root_path %>
-          </li>
-          <li>
-            <%= link_to "Profile", user_path(current_user) %>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li >
-            <%= link_to "Sign out", sign_out_path, method: :delete %>
-          </li>
-        </ul>
-    </div>
-  </div>  
-</nav>
-
 
 <center>
-
+<div class="row">
   <div class="listing">
     <h2><%= t(".listing") %></h2>
     <%= form_for @listing  do |form| %>
@@ -32,5 +11,6 @@
       </div>
     <% end %>
   </div>
+</div>  
 
 </center>
