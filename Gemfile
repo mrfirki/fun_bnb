@@ -32,6 +32,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'figaro'
 #add braintree payment system
 gem 'braintree'
+#add sidekiq
+gem 'sidekiq'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

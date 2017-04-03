@@ -24,12 +24,16 @@ class ReservationsController < ApplicationController
 		@listing = Listing.find(params[:listing_id])
 		@reservation = current_user.reservations.new(datepicker_reservation_params)
 		@reservation.listing_id = @listing.id
-		byebug
 		@reservation.total_price = @listing.price * (@reservation.check_out - @reservation.check_in)
-		byebug
+		@host = "mrfikri94@gmail.com"
+
 		if !@reservation.overlaps_date(@listing.reservations)
-			byebug
 			if @reservation.save
+				byebug
+				Reservation
+				# Mailer.notification_email(current_user.email, @host, @reservation.listing.id, @reservation.id).deliver_now
+				ReservationJob.perform_later(current_user.email, @host, @reservation.listing.id, @reservation.id)
+				# ReservationMailer to send a notification email after save
 				redirect_to listing_reservations_path
 			else
 				render "new"
