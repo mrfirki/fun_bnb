@@ -30,6 +30,8 @@ gem "fog-aws"
 gem 'bootstrap-datepicker-rails'
 #gem figaro to store confidential stuff
 gem 'figaro'
+#add braintree payment system
+gem 'braintree'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

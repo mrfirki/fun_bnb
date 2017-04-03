@@ -1,0 +1,2 @@
+class AddColumnToReservation < ApplicationRecord
+end
