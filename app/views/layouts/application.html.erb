@@ -6,6 +6,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <!-- Load the Client component. -->
+    <script src="https://js.braintreegateway.com/web/3.11.1/js/client.min.js"></script>
+      <!-- Load the Hosted Fields component. -->
+    <script src="https://js.braintreegateway.com/web/3.11.1/js/hosted-fields.min.js"></script>
   </head>
 
   <body class="body">
@@ -25,10 +29,10 @@
                         <%= link_to "Listing", new_listing_path %>
                     </li>
                     <li>
-                        <%= link_to "user listing", user_listings_path(current_user)%>
+                        <%= link_to "my listings", user_listings_path(current_user)%>
                     </li>
                     <li>
-                        <%= link_to "bookings", user_reservations_path(current_user) %>
+                        <%= link_to "my bookings", user_reservations_path(current_user) %>
                     </li>
                         <% if current_user.role == "superadmin" %>
                     <li>
@@ -47,15 +51,17 @@
         </div>        
     </nav>
   <div>
-    <section> 
-      <div id="flash">
-        <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-        <% end %>
-      </div>
-    </section>
+
     <div style="padding-top: 50px;">
+      <section> 
+        <div id="flash">
+          <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+          <% end %>
+        </div>
+      </section>
         <%= yield %>
     </div>
+    
   </body>
 </html>

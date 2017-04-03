@@ -1,7 +1,4 @@
 
-
-
-
 <center>
 	<div class="row">
 	  <div class="container-fluid">
@@ -9,8 +6,12 @@
 	      <h3>Booking person: <%= @reservation.user.username %></h3>
 	      <h3>Guest Number: <%= @reservation.guest_count %></h3>
 	      <h3>Day check in: <%= @reservation.check_in %></h3>
-	      <h3>Day check out: <%= @reservation.check_out %></h3>   
+	      <h3>Day check out: <%= @reservation.check_out %></h3>
+	      <h3>Total price: <%= @reservation.total_price %></h3>    
 	    </div>  
 	  </div>
 	</div>
+
+	<%= link_to "PAY", new_reservation_payment_path(@reservation) %>
+
 </center> 

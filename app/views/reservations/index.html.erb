@@ -1,5 +1,5 @@
 
-<center>
+
 <% @reservations.each do |r| %>
 <div class="spacing"></div>
     <div class="row container-fluid">
@@ -11,7 +11,9 @@
                 <h4>Day check out: <%= r.check_out %><br></h4>
                 <h4>owner id: <%= r.user.id %><br></h4>
                 <h4>listing id: <%= r.listing_id %><br></h4>
+                <%= link_to "view", reservation_path(r) %>
                 <%= link_to "delete", user_reservation_path(r.user, r), method: :delete, data: {confirm: "are you sure?"} %>
+
             </div>
         </div>
     </div>

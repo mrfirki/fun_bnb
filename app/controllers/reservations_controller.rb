@@ -1,12 +1,13 @@
 class ReservationsController < ApplicationController
 
 	def new
+		# @user = find_user
 		@listing = Listing.find(params[:listing_id])
 		@reservation = Reservation.new
 	end
 	
 	def index
-		@user = User.find(params[:user_id])
+		# @user = User.find(params[:user_id])
 		if params[:user_id]
 			@reservations = Reservation.where(user_id: params[:user_id])
 		else
@@ -15,7 +16,7 @@ class ReservationsController < ApplicationController
 	end
 
 	def show
-		@listings = Listing.find(params[:listing_id])
+		@payment = Payment.new
 		@reservation = Reservation.find(params[:id])
 	end	
 
@@ -23,25 +24,27 @@ class ReservationsController < ApplicationController
 		@listing = Listing.find(params[:listing_id])
 		@reservation = current_user.reservations.new(datepicker_reservation_params)
 		@reservation.listing_id = @listing.id
+		byebug
+		@reservation.total_price = @listing.price * (@reservation.check_out - @reservation.check_in)
+		byebug
 		if !@reservation.overlaps_date(@listing.reservations)
+			byebug
 			if @reservation.save
 				redirect_to listing_reservations_path
 			else
 				render "new"
 			end
 		else
-		flash[:error] = "sorry reservation failed!!"
+			flash[:error] = "sorry reservation failed!!"
 				render "new"
 		end			 
 	end
 
-	def edit
-		
+	def edit	
 		@reservation = Reservation.find(params[:id])
 	end
 
-	def update
-		
+	def update		
 		@reservation = Reservation.find(params[:id])
 		if @reservation.update(reservation_params)
 			flash[:succes] = "yey update success!!"
