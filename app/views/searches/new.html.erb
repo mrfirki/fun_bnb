@@ -1,0 +1,30 @@
+<center>
+	
+<h1>Advanced Search</h1>
+
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+
+	<div class="field">
+		<%= s.label :name %><br/>
+		<%= s.text_field :name %>
+	</div>
+	
+	<div class="field">
+		<%= s.label :place %><br/>
+		<%= s.select :place, options_for_select(@place), :include_blank => true %>
+	</div>
+
+	<div class="field">
+		<%= s.label :home_type %><br/>
+		<%= s.text_field :home_type %>
+	</div>
+
+	<div class="actions">
+		<%= s.submit "Search", class: "pure-button pure-button-primary" %>
+	</div>
+
+	<% end %>
+
+	<p> <%= link_to "Back", root_path %> </p>	
+
+</center>

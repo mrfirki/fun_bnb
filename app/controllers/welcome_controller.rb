@@ -1,11 +1,15 @@
 class WelcomeController < ApplicationController
+
   def index
-  	@counter ||= 0 unless @counter
-		if params[:value]
-			@counter+= params[:value].to_i
-			@listings = Listing.all.limit(5).offset(@counter)
-		else
-			@listings = Listing.all.limit(5).offset(0)
-		end	
+   	if params[:page]
+   		@listings = Listing.all.order("created_at DESC").paginate(page: params[:page], per_page: 2)
+ 	 else	 	
+	  	if params[:search]
+	  		@listings = Listing.where(["name LIKE ?", "#{params[:search]}"]).paginate(page: params[:page], per_page: 2)
+	  	else
+	  		@listings = Listing.order("created_at DESC").paginate(page: params[:page], per_page: 2)
+	  	end
+	 end  	
   end
+
 end
