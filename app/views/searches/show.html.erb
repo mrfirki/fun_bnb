@@ -1,0 +1,23 @@
+<center>
+	
+	<h1>Search Result</h1>
+	<p> <%= link_to "Back", new_search_path %></p>
+
+	<% if @search.search_listings.empty? %>
+
+		<p>No records Found</p>
+
+	<% else %>
+
+	<% @search.search_listings.each do |c| %>
+		<br>
+
+		<div class="div">
+			<h1><%= c.name %></h1>
+			<p>place: <%= c.place %></p>
+			<p>home type: <%= c.home_type %></p>
+		</div>
+		<% end %>
+	<% end %>
+			
+</center>

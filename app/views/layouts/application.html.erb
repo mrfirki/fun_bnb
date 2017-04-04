@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
      <!-- Load the Client component. -->
     <script src="https://js.braintreegateway.com/web/3.11.1/js/client.min.js"></script>
       <!-- Load the Hosted Fields component. -->
@@ -52,7 +53,7 @@
     </nav>
   <div>
 
-    <div style="padding-top: 50px;">
+    <div style="padding-top: 100px;">
       <section> 
         <div id="flash">
           <% flash.each do |key, value| %>

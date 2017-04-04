@@ -10,6 +10,9 @@ end
 gem 'rails', '~> 5.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+#add pagination gem
+gem 'will_paginate',           '3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 #add user authentication
 gem 'omniauth'
 gem 'omniauth-facebook'
